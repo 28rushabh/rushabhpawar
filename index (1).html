@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twenty Ate Rushabh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Racing+Sans+One&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0f; --ink:#12121a; --white:#fff; --blue:#1e6bff; --blue2:#6fa3ff; --yellow:#ffd60a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black); color:var(--white);
+    font-family:'Space Grotesk',system-ui,sans-serif; line-height:1.5;
+    overflow-x:hidden; min-height:100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(30,107,255,.25), transparent 40%),
+      radial-gradient(circle at 90% 30%, rgba(255,214,10,.12), transparent 35%);
+    background-attachment:fixed;
+  }
+  /* sparkles */
+  .sparkle{position:fixed;pointer-events:none;z-index:0;color:var(--yellow);opacity:0;animation:twinkle 3.5s infinite;font-size:18px}
+  @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:.9;transform:scale(1) rotate(90deg)}}
+
+  .checker{
+    height:28px;
+    background:
+      conic-gradient(#fff 25%, #0a0a0f 0 50%, #fff 0 75%, #0a0a0f 0) 0 0/28px 28px;
+  }
+  .checker.slim{height:14px;background-size:14px 14px}
+
+  main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 18px 80px}
+
+  /* hero */
+  .hero{text-align:center;padding:48px 0 24px;position:relative}
+  .eyebrow{font-family:'Bungee',cursive;color:var(--yellow);letter-spacing:.18em;font-size:.8rem}
+  h1{
+    font-family:'Racing Sans One',cursive; font-style:italic; text-transform:uppercase;
+    font-size:clamp(3rem,15vw,5.5rem); line-height:.95; margin:14px 0 6px;
+    transform:skewX(-8deg);
+    text-shadow:3px 3px 0 var(--blue), 6px 6px 0 rgba(30,107,255,.45);
+  }
+  h1 .ate{color:var(--yellow);text-shadow:3px 3px 0 #b8860b, 6px 6px 0 rgba(0,0,0,.6)}
+  .tagline{font-family:'Bungee',cursive;font-size:.95rem;color:var(--blue2);margin-top:10px}
+  .date-badge{
+    display:inline-block;margin-top:20px;padding:10px 22px;background:var(--yellow);color:#000;
+    font-family:'Bungee',cursive;font-size:1.1rem;transform:skewX(-10deg);
+    box-shadow:5px 5px 0 var(--blue);
+  }
+  .car-lane{position:relative;height:46px;margin-top:18px;overflow:hidden}
+  .car-lane::after{content:"";position:absolute;left:0;right:0;bottom:8px;border-bottom:3px dashed rgba(255,255,255,.3)}
+  .car{position:absolute;bottom:10px;font-size:2rem;animation:drive 6s linear infinite;transform:scaleX(-1)}
+  @keyframes drive{0%{left:-12%}100%{left:105%}}
+
+  /* message card */
+  .card{
+    background:var(--ink);border:2px solid #23233a;border-radius:14px;padding:22px;margin-top:22px;
+    position:relative;
+  }
+  .msg{border-left:6px solid var(--yellow);font-size:1.08rem}
+  .msg p+p{margin-top:12px}
+  .msg strong{color:var(--yellow)}
+  .sig{font-family:'Bungee',cursive;color:var(--blue2);font-size:.85rem;margin-top:14px}
+
+  /* sections */
+  .stage{margin-top:34px}
+  .stage-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .lap{
+    font-family:'Bungee',cursive;background:var(--blue);color:#fff;padding:6px 12px;font-size:.8rem;
+    transform:skewX(-10deg);white-space:nowrap
+  }
+  .stage-head h2{font-family:'Racing Sans One',cursive;font-style:italic;text-transform:uppercase;font-size:1.7rem;letter-spacing:.02em}
+  .hint{color:#b8b8cc;font-size:.92rem;margin:-6px 0 14px}
+
+  .opts{display:grid;gap:10px}
+  .opt{position:relative;display:block;cursor:pointer}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .face{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;background:#0f0f18;
+    border:2px solid #2b2b45;border-radius:12px;transition:.18s;
+  }
+  .opt .ico{font-size:1.6rem}
+  .opt .t{font-weight:700}
+  .opt .s{font-size:.85rem;color:#a9a9c2}
+  .opt:hover .face{border-color:var(--blue2);transform:translateX(3px)}
+  .opt input:checked + .face{
+    border-color:var(--yellow);background:linear-gradient(90deg,rgba(255,214,10,.16),rgba(30,107,255,.14));
+    box-shadow:0 0 0 2px rgba(255,214,10,.25), 0 0 24px rgba(255,214,10,.2);
+  }
+  .opt input:checked + .face::after{content:"✦";margin-left:auto;color:var(--yellow);font-size:1.3rem}
+  .opt input:focus-visible + .face{outline:3px solid var(--blue2)}
+  .other-input{
+    display:none;margin-top:8px;width:100%;padding:12px 14px;border-radius:10px;border:2px solid var(--blue);
+    background:#0a0a12;color:#fff;font:inherit;
+  }
+  .other-input.show{display:block}
+
+  textarea{
+    width:100%;min-height:120px;padding:14px;border-radius:12px;border:2px solid #2b2b45;background:#0a0a12;
+    color:#fff;font:inherit;resize:vertical
+  }
+  textarea:focus,.other-input:focus{outline:none;border-color:var(--yellow)}
+
+  /* scratch */
+  .scratch-wrap{text-align:center}
+  .scratch{position:relative;width:min(100%,340px);height:150px;margin:0 auto;border-radius:14px;overflow:hidden;
+    border:3px solid var(--yellow);box-shadow:0 0 30px rgba(255,214,10,.25)}
+  .prize{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(45deg,#0d2a66,#0d2a66 12px,#123a8f 12px,#123a8f 24px);padding:12px
+  }
+  .prize b{font-family:'Racing Sans One',cursive;font-style:italic;font-size:1.7rem;color:var(--yellow);text-transform:uppercase}
+  .prize span{font-size:.92rem;margin-top:4px}
+  .scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity .6s}
+  .scratch canvas.gone{opacity:0;pointer-events:none}
+
+  /* submit */
+  .go{
+    width:100%;margin-top:30px;padding:18px;border:0;border-radius:12px;cursor:pointer;
+    font-family:'Bungee',cursive;font-size:1.15rem;color:#000;background:var(--yellow);
+    box-shadow:0 6px 0 #b8860b;transition:.12s;letter-spacing:.04em
+  }
+  .go:active{transform:translateY(5px);box-shadow:0 1px 0 #b8860b}
+  .go:disabled{opacity:.6;cursor:wait}
+  .err{color:#ff7b7b;margin-top:12px;text-align:center;min-height:1.2em}
+
+  /* success */
+  #done{display:none;text-align:center;padding:40px 0}
+  #done h2{font-family:'Racing Sans One',cursive;font-style:italic;text-transform:uppercase;font-size:2.6rem;text-shadow:3px 3px 0 var(--blue)}
+  .bonus{
+    margin-top:22px;padding:22px;border-radius:14px;border:3px dashed var(--yellow);
+    background:rgba(255,214,10,.08);
+  }
+  .bonus h3{font-family:'Bungee',cursive;color:var(--yellow);font-size:1.2rem}
+  .bonus p{margin-top:8px}
+  .blessing{
+    border-style:solid;
+    background:radial-gradient(circle at 50% 0%, rgba(255,214,10,.28), rgba(30,107,255,.1) 70%);
+    box-shadow:0 0 36px rgba(255,214,10,.25);
+    animation:glow 3s ease-in-out infinite;
+  }
+  .blessing .om{font-size:2.6rem;animation:float 3s ease-in-out infinite}
+  @keyframes glow{50%{box-shadow:0 0 56px rgba(255,214,10,.45)}}
+  @keyframes float{50%{transform:translateY(-6px)}}
+  footer{text-align:center;margin-top:40px;color:#7d7d98;font-size:.85rem}
+  .confetti{position:fixed;top:-20px;z-index:5;pointer-events:none;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+
+<div class="checker"></div>
+
+<main>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">✦ 28 LAPS AROUND THE SUN ✦</div>
+    <h1>Twenty<br><span class="ate">Ate</span> Rushabh</h1>
+    <div class="tagline">Rush Hour Edition · Fast, Furious &amp; Finally 28</div>
+    <div class="date-badge">20 · 11 · 2026</div>
+    <div class="car-lane"><div class="car">🏎️</div></div>
+  </header>
+
+  <section class="card msg">
+    <p><strong>You're growing up, and how!</strong> Cuter by the day, hotter by the night.</p>
+    <p>It's your day, and we're doing it <strong>your way</strong>. Buckle up, birthday boy. Pick what you want below and I'll make it happen.</p>
+    <div class="sig">— Your favourite pit crew ✦</div>
+  </section>
+
+  <form id="form" novalidate>
+    <input type="hidden" name="_subject" value="🏁 Rushabh has made his birthday picks!">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- ACTIVITY -->
+    <section class="stage" data-group="activity">
+      <div class="stage-head"><span class="lap">LAP 1</span><h2>The Activity</h2></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="activity" value="Shooting" data-preset="1"><div class="face"><span class="ico">🎯</span><div><div class="t">Shooting</div><div class="s">Steady aim, sharp eyes</div></div></div></label>
+        <label class="opt"><input type="radio" name="activity" value="Games" data-preset="1"><div class="face"><span class="ico">🎮</span><div><div class="t">Games</div><div class="s">Come at me</div></div></div></label>
+        <label class="opt"><input type="radio" name="activity" value="Something else" data-other="1"><div class="face"><span class="ico">✨</span><div><div class="t">Something else</div><div class="s">You tell me</div></div></div></label>
+      </div>
+      <input class="other-input" type="text" name="activity_other" placeholder="What's the plan, champ?">
+    </section>
+
+    <!-- DINNER -->
+    <section class="stage" data-group="dinner">
+      <div class="stage-head"><span class="lap">LAP 2</span><h2>The Dinner</h2></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="dinner" value="Home: Fish" data-preset="1"><div class="face"><span class="ico">🐟</span><div><div class="t">Fish at home</div><div class="s">Cooked just for you</div></div></div></label>
+        <label class="opt"><input type="radio" name="dinner" value="Home: Charcoal chicken" data-preset="1"><div class="face"><span class="ico">🍗</span><div><div class="t">Charcoal chicken at home</div><div class="s">Smoky and fresh off the grill</div></div></div></label>
+        <label class="opt"><input type="radio" name="dinner" value="Go out" data-preset="1"><div class="face"><span class="ico">🍽️</span><div><div class="t">Let's go out</div><div class="s">Dress up, pick a place</div></div></div></label>
+        <label class="opt"><input type="radio" name="dinner" value="Something else" data-other="1"><div class="face"><span class="ico">🔥</span><div><div class="t">Something else</div><div class="s">Name your craving</div></div></div></label>
+      </div>
+      <input class="other-input" type="text" name="dinner_other" placeholder="What are you craving?">
+    </section>
+
+    <!-- SCRATCH CARD -->
+    <section class="stage scratch-wrap">
+      <div class="stage-head" style="justify-content:center"><span class="lap">PIT STOP</span><h2>Wait… what's this?</h2></div>
+      <p class="hint" style="margin-top:0">Scratch to reveal 👇</p>
+      <div class="scratch">
+        <div class="prize"><b>Yay! 🎉</b><span>You unlocked a surprise!</span><span style="color:var(--yellow);font-weight:700">Claim it from me in person 😉</span></div>
+        <canvas id="scratchCanvas"></canvas>
+      </div>
+    </section>
+
+    <!-- GIFT -->
+    <section class="stage" data-group="gift">
+      <div class="stage-head"><span class="lap">LAP 3</span><h2>The Gift</h2></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="gift" value="F1 merch" data-preset="1"><div class="face"><span class="ico">🏁</span><div><div class="t">F1 merch</div><div class="s">Wear the team colours</div></div></div></label>
+        <label class="opt"><input type="radio" name="gift" value="A toy car he hasn't had in a long time" data-preset="1"><div class="face"><span class="ico">🚗</span><div><div class="t">A toy you haven't had in ages</div><div class="s">Bring back the kid in you</div></div></div></label>
+        <label class="opt"><input type="radio" name="gift" value="Take me, I'll choose" data-preset="1"><div class="face"><span class="ico">🛍️</span><div><div class="t">Take me, I'll choose</div><div class="s">You, me and the shop</div></div></div></label>
+      </div>
+    </section>
+
+    <!-- SPECIAL REQUESTS -->
+    <section class="stage">
+      <div class="stage-head"><span class="lap">FINAL LAP</span><h2>Special Requests</h2></div>
+      <p class="hint">Anything else on your mind? Type it here. No limits (okay, a few limits).</p>
+      <textarea name="special_requests" placeholder="Your wish is my command…"></textarea>
+    </section>
+
+    <button class="go" type="submit" id="goBtn">🏁 LOCK IN MY PICKS</button>
+    <div class="err" id="err"></div>
+  </form>
+
+  <section id="done">
+    <h2>Race<br>Logged! 🏁</h2>
+    <p style="margin-top:14px">Got it, birthday boy. Your picks are on their way to me. See you at the finish line.</p>
+    <div class="bonus blessing">
+      <div class="om">🙏</div>
+      <h3>FIRST STOP: BAPPA</h3>
+      <p>Every great race starts with a blessing.</p>
+      <p>So before anything else, let's get you blessed by Bappa and give Him an invite to your new year. ✦</p>
+    </div>
+
+    <div class="scratch-wrap" style="margin-top:34px">
+      <div class="stage-head" style="justify-content:center"><span class="lap">ONE MORE THING</span></div>
+      <p class="hint" style="margin-top:0">Scratch to reveal 👇</p>
+      <div class="scratch">
+        <div class="prize"><b>Yay! 🔥</b><span>You unlocked a</span><span style="color:var(--yellow);font-weight:700;font-size:1.3rem">steamy night 😏</span></div>
+        <canvas id="scratchCanvas2"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <footer>Made with ♥ for Rushabh · 28 and counting</footer>
+</main>
+
+<div class="checker slim"></div>
+
+<script>
+/* ====== SETTINGS ====== */
+const EMAIL = "msakshiii01@gmail.com";
+
+/* ====== sparkles ====== */
+for(let i=0;i<22;i++){
+  const s=document.createElement('div');s.className='sparkle';s.textContent=i%3?'✦':'✧';
+  s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+  s.style.animationDelay=(Math.random()*3.5)+'s';s.style.fontSize=(10+Math.random()*16)+'px';
+  s.style.color=['#ffd60a','#6fa3ff','#fff'][i%3];
+  document.body.appendChild(s);
+}
+
+/* ====== "something else" boxes ====== */
+document.querySelectorAll('.stage[data-group]').forEach(sec=>{
+  const box=sec.querySelector('.other-input');
+  sec.querySelectorAll('input[type=radio]').forEach(r=>{
+    r.addEventListener('change',()=>{
+      if(!box) return;
+      const show=r.dataset.other==='1';
+      box.classList.toggle('show',show);
+      if(show) box.focus();
+    });
+  });
+});
+
+/* ====== scratch card ====== */
+function initScratch(id){
+  const c=document.getElementById(id), ctx=c.getContext('2d');
+  let drawing=false, revealed=false;
+  function paint(){
+    const r=c.getBoundingClientRect(); c.width=r.width; c.height=r.height;
+    const g=ctx.createLinearGradient(0,0,c.width,c.height);
+    g.addColorStop(0,'#c9c9d6');g.addColorStop(.5,'#f1f1f7');g.addColorStop(1,'#9a9ab0');
+    ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle='#555';ctx.font='700 18px Bungee, sans-serif';ctx.textAlign='center';
+    ctx.fillText('SCRATCH HERE ✦',c.width/2,c.height/2+6);
+    ctx.globalCompositeOperation='destination-out';
+  }
+  paint();
+  function pos(e){const r=c.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
+  function scratch(e){
+    if(!drawing||revealed) return;
+    const p=pos(e);ctx.beginPath();ctx.arc(p.x,p.y,20,0,7);ctx.fill();
+  }
+  function check(){
+    const d=ctx.getImageData(0,0,c.width,c.height).data;let clear=0;
+    for(let i=3;i<d.length;i+=16){if(d[i]===0)clear++}
+    if(clear/(d.length/16)>0.45){revealed=true;c.classList.add('gone');boom(40)}
+  }
+  c.addEventListener('pointerdown',e=>{drawing=true;c.setPointerCapture(e.pointerId);scratch(e)});
+  c.addEventListener('pointermove',scratch);
+  c.addEventListener('pointerup',()=>{drawing=false;check()});
+  c.addEventListener('pointercancel',()=>{drawing=false});
+}
+initScratch('scratchCanvas');
+
+/* ====== confetti ====== */
+function boom(n){
+  const cols=['#ffd60a','#1e6bff','#fff','#6fa3ff'];
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div');d.className='confetti';
+    d.style.left=Math.random()*100+'vw';
+    d.style.width=d.style.height=(6+Math.random()*8)+'px';
+    d.style.background=cols[i%4];
+    d.style.animationDuration=(2+Math.random()*2.5)+'s';
+    d.style.animationDelay=Math.random()*.6+'s';
+    document.body.appendChild(d);setTimeout(()=>d.remove(),5500);
+  }
+}
+
+/* ====== submit ====== */
+const form=document.getElementById('form'), err=document.getElementById('err'), btn=document.getElementById('goBtn');
+form.addEventListener('submit',async e=>{
+  e.preventDefault(); err.textContent='';
+  const fd=new FormData(form);
+  const missing=['activity','dinner','gift'].filter(k=>!fd.get(k));
+  if(missing.length){err.textContent='Pick one in every lap before you cross the line 🏁';return}
+  if(fd.get('activity')==='Something else' && !fd.get('activity_other').trim()){err.textContent='Tell me your activity idea first ✨';return}
+  if(fd.get('dinner')==='Something else' && !fd.get('dinner_other').trim()){err.textContent='Tell me what you are craving first 🔥';return}
+
+  const payload={};
+  fd.forEach((v,k)=>{ if(v!=='') payload[k]=v });
+
+  btn.disabled=true; btn.textContent='SENDING…';
+  try{
+    if(EMAIL==='YOUR_EMAIL_HERE') throw new Error('email not set');
+    const res=await fetch('https://formsubmit.co/ajax/'+encodeURIComponent(EMAIL),{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('bad response');
+    form.style.display='none';
+    document.getElementById('done').style.display='block';
+    initScratch('scratchCanvas2');
+    window.scrollTo({top:document.getElementById('done').offsetTop-40,behavior:'smooth'});
+    boom(80);
+  }catch(x){
+    err.textContent='Oops, pit stop failed. Try once more, or just tell me in person 😅';
+    btn.disabled=false; btn.textContent='🏁 LOCK IN MY PICKS';
+  }
+});
+</script>
+</body>
+</html>
